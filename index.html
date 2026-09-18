@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sabores do Mundo — explore receitas por país e ingrediente</title>
+<meta name="description" content="Explore receitas do mundo todo por categoria ou ingrediente, com ingredientes e modo de preparo, usando dados abertos da TheMealDB.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1E231C">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+</head>
+<body>
+
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="masthead">
+  <div class="masthead__inner">
+    <p class="masthead__kicker">cardápio nº 01 · edição digital</p>
+    <h1 class="masthead__title">Sabores do<br>Mundo</h1>
+    <p class="masthead__lede">Um quadro de receitas para folhear: escolha uma cozinha do mundo ou procure por um ingrediente que você tem na despensa.</p>
+  </div>
+
+  <form class="search" id="search-form" role="search">
+    <label class="search__label" for="search-input">Buscar por nome ou ingrediente</label>
+    <div class="search__row">
+      <input
+        class="search__input"
+        id="search-input"
+        name="q"
+        type="text"
+        placeholder="ex.: frango, chocolate, arroz…"
+        autocomplete="off"
+      >
+      <button class="search__button" type="submit">Buscar</button>
+    </div>
+  </form>
+
+  <div class="masthead__actions">
+    <button class="link-button" id="geo-button" type="button">
+      📍 Cozinha da sua região
+    </button>
+    <button class="link-button" id="install-button" type="button" hidden>
+      ⬇️ Instalar aplicativo
+    </button>
+  </div>
+</header>
+
+<main id="conteudo">
+  <nav class="categories" aria-label="Categorias de receitas">
+    <ul class="categories__list" id="category-list">
+      <li><button class="chip chip--active" type="button" data-category="">Todas</button></li>
+    </ul>
+  </nav>
+
+  <section aria-live="polite" aria-label="Resultados">
+    <p class="status" id="status"></p>
+    <ul class="grid" id="grid"></ul>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>Receitas e imagens fornecidas por <a href="https://www.themealdb.com/" target="_blank" rel="noopener">TheMealDB</a>, uma API pública e gratuita.</p>
+</footer>
+
+<div class="overlay" id="overlay" hidden></div>
+
+<aside class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="panel-title" hidden>
+  <button class="panel__close" id="panel-close" type="button" aria-label="Fechar receita">✕</button>
+  <div class="panel__body" id="panel-body"></div>
+</aside>
+
+<script src="script.js"></script>
+</body>
+</html>
